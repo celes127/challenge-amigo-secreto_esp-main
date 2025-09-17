@@ -1,5 +1,5 @@
 //Variables
-let lista = [];
+let amigos = [];
 
 function agregarAmigo() 
 {
@@ -8,7 +8,7 @@ function agregarAmigo()
     
     if (nombre != '')
     {
-        lista.push(nombre);
+        amigos.push(nombre);
         vaciarCaja();
         recorrerArray();
     }
@@ -16,7 +16,6 @@ function agregarAmigo()
     {
         alert('Ingresar un nombre valido');
     }
-    console.log(lista);
     return;
 }
 
@@ -31,11 +30,27 @@ function recorrerArray ()
 {
     let listaAmigos = document.getElementById('listaAmigos');
     listaAmigos.innerHTML = "";
-    lista.forEach((item) => 
+    amigos.forEach((item) => 
             {
                 let listItem = document.createElement("li");
                 listItem.textContent = item;
                 listaAmigos.appendChild(listItem);
             });
+    return;
+}
+
+function sortearAmigo()
+{
+    if (amigos.length > 0)
+    {
+        let numeroGenerado = Math.floor(Math.random()*amigos.length);
+    
+        let elementoHTML = document.getElementById('resultado');
+        elementoHTML.innerHTML = amigos[numeroGenerado];
+    }
+    else 
+    {
+        alert('La lista esta vacia');
+    }
     return;
 }
